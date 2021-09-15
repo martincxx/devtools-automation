@@ -31,3 +31,29 @@ And with that, we can update Spec Files and Page Objects:
 ```npx jscodeshift -t ./node_modules/@wdio/codemod/v6 ./test/specs/*
 npx jscodeshift -t ./node_modules/@wdio/codemod/v6 ./test/specs/*
 ```
+
+Run `npm ci` and the project has been migrated to v6 successfully.
+
+## Migration to V7
+
+After migrating from *v5 to v6*, we can proceed to upgrade to *wdio v7*. The process is pretty much the same procedure. With the required migration packages already installed: first upgrade dependencies
+
+```npm i --save-dev @wdio/cli@7 @wdio/mocha-framework@7 @wdio/local-runner@7 @wdio/spec-reporter@7 @wdio/sync@7 wdio-chromedriver-service@7 webdriverio@7
+npm i --save-dev @wdio/cli@7 @wdio/mocha-framework@7 @wdio/local-runner@7 @wdio/spec-reporter@7 @wdio/sync@7 wdio-chromedriver-service@7 webdriverio@7
+```
+
+and then continue with the __Transform Config File__
+
+```npx jscodeshift -t ./node_modules/@wdio/codemod/v7 ./wdio.conf.js
+npx jscodeshift -t ./node_modules/@wdio/codemod/v7 ./wdio.conf.js
+```
+
+and __Update Step definitions__ steps:
+
+```npx jscodeshift -t ./node_modules/@wdio/codemod/v7 ./test/specs/*
+npx jscodeshift -t ./node_modules/@wdio/codemod/v7 ./test/specs/*
+```
+
+And voilá, you can continue adding new Specs using wdio v7.
+
+PS: Don't forget that webdriverio is deprecating the [sync API](https://webdriver.io/blog/2021/07/28/sync-api-deprecation).
